@@ -399,14 +399,6 @@ h1 {
   --card-padding: 0.75rem;
 
   display: grid;
-  grid-template-columns: 6rem minmax(0, 1fr);
-  grid-template-areas:
-    "photo booth"
-    "photo name"
-    "photo pitch"
-    "photo links";
-  grid-template-rows: auto auto auto 1fr;
-  column-gap: var(--s2);
   padding: var(--card-padding);
   border-radius: var(--card-radius);
   background: var(--white);
@@ -414,47 +406,64 @@ h1 {
 }
 
 .business img {
-  grid-area: photo;
   display: block;
   width: 100%;
   height: auto;
+  margin-bottom: var(--s2);
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: var(--card-radius);
 }
 
 .booth {
-  grid-area: booth;
   font-size: 0.9375rem;
   font-weight: 700;
 }
 
 .business h3 {
-  grid-area: name;
   font-size: 1.375rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .pitch {
-  grid-area: pitch;
   margin-top: 0.25rem;
   color: var(--navy-70);
 }
 
 .social {
-  grid-area: links;
   display: flex;
   flex-wrap: wrap;
-  column-gap: var(--s3);
-  align-self: start;
+  gap: var(--s1);
+  margin-top: var(--s2);
 }
 
 .social a {
-  display: inline-block;
-  padding-block: 0.625rem;
-  font-weight: 600;
-  text-underline-offset: 0.25em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 var(--s3);
+  border-radius: 2rem;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.social .bi {
+  display: flex;
+}
+
+.social .bi::before {
+  vertical-align: 0;
+}
+
+@media (hover: hover) {
+  .social a:hover {
+    background: var(--navy-70);
+  }
 }
 
 @media (min-width: 48em) {
@@ -467,7 +476,35 @@ h1 {
     --card-padding: 1rem;
 
     grid-template-columns: 9rem minmax(0, 1fr);
+    grid-template-areas:
+      "photo booth"
+      "photo name"
+      "photo pitch"
+      "photo links";
+    grid-template-rows: auto auto auto 1fr;
     column-gap: var(--s3);
+  }
+
+  .business img {
+    grid-area: photo;
+    margin-bottom: 0;
+  }
+
+  .booth {
+    grid-area: booth;
+  }
+
+  .business h3 {
+    grid-area: name;
+  }
+
+  .pitch {
+    grid-area: pitch;
+  }
+
+  .social {
+    grid-area: links;
+    align-self: start;
   }
 }
 
